@@ -1,0 +1,135 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #121212;
+    color: #fff;
+    user-select: none;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1E1E1E;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.header h1, .header h4 {
+    margin: 0;
+}
+
+.navigation {
+    display: flex;
+    gap: 20px;
+}
+
+.navigation a {
+    color: #00BCD4;
+    text-decoration: none;
+    padding: 10px 15px;
+    background-color: #333;
+    border-radius: 4px;
+}
+
+.navigation a:hover {
+    background-color: #00BCD4;
+    color: #121212;
+}
+
+.dashBoard {
+    display: flex;
+    justify-content: space-between;
+    background-color: #1E1E1E;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.totalBox {
+    width: 50%;
+    height: 150px;
+    background-color: #333;
+    border-radius: 8px;
+}
+
+.percentage {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.percentageBox {
+    width: 80%;
+    height: 150px;
+    background-color: #333;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.percentageBar {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    background-color: #1E1E1E;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.percentageNumber {
+    position: absolute;
+    color: #00BCD4;
+    font-size: 24px;
+}
+
+.buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.tambahButton, .ambilButton {
+    width: 48%;
+    padding: 15px;
+    background-color: #00BCD4;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.tambahButton:hover, .ambilButton:hover {
+    background-color: #00796B;
+}
+
+.history {
+    margin-top: 20px;
+    background-color: #1E1E1E;
+    height: 400px;
+    border-radius: 8px;
+}
+
+.stickyFooter {
+    display: flex;
+    position: fixed;
+    margin-top: 20px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background-color: #1E1E1E;
+    border-radius: 8px;
+}

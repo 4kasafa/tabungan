@@ -4,15 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/index-mobile.css">
 </head>
 <body>
-    <input type="text" name="tambah" id="tambah" placeholder="0.0">
-    <button id="tombol-tambah">tambah saldo</button>
-    <ul id="daftarRiwayat">
-        <li>23000</li>
-        <li>250000</li>
-    </ul>
-    <script src="index.js" type="module"></script>
+    <div class="container">
+        <div class="header">
+            <h1>TABUNGAN</h1>
+            <h4>Kardus</h4>
+            <div class="navigation">
+                <a href="">Bagi</a>
+                <a href="">Tutor download</a>
+                <a href="">About</a>
+            </div>
+        </div>
+        <div class="dashBoard">
+            <div class="totalBox"></div>
+            <div class="percentage">
+                <div class="percentageBox">
+                    <div class="percentageBar">
+                        <p class="percentageNumber">75%</p>
+                        <div class="ring"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="buttons">
+            <button class="tambahButton">tambah</button>
+            <button class="ambilButton">Ambil</button>
+        </div>
+        <div class="history"></div>
+        <div class="stickyFooter">&copy; 2024 BY ABDUL</div>
+    </div>
+    <script src="main.js" type="module"></script>
+    <script src="firebase.js" type="module"></script>
 </body>
 </html>
