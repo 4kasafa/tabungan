@@ -19,13 +19,20 @@ body {
     justify-content: space-between;
     align-items: center;
     background-color: #1E1E1E;
-    padding: 20px;
+    padding: 5px 20px;
     border-radius: 8px;
     margin-bottom: 20px;
 }
 
-.header h1, .header h4 {
+.title {
+    display: flex;
+    align-items: flex-end;
     margin: 0;
+}
+
+.title h2 {
+    font-weight: lighter;
+    padding-bottom: 5px;
 }
 
 .navigation {
@@ -44,6 +51,10 @@ body {
 .navigation a:hover {
     background-color: #00BCD4;
     color: #121212;
+}
+
+.hamburger {
+    display: none;
 }
 
 .dashBoard {
@@ -109,26 +120,28 @@ body {
     border: none;
     border-radius: 8px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .tambahButton:hover, .ambilButton:hover {
     background-color: #00796B;
 }
 
+.tambahButton:focus, .ambilButton:focus {
+    background-color: #00BCD4; /* Kembali ke warna asal */
+    outline: none; /* Hilangkan border fokus jika ada */
+}
+
 .history {
     margin-top: 20px;
     background-color: #1E1E1E;
-    height: 400px;
+    height: 200px;
     border-radius: 8px;
 }
 
 .stickyFooter {
-    display: flex;
-    position: fixed;
     margin-top: 20px;
     text-align: center;
-    align-items: center;
-    justify-content: center;
     padding: 10px;
     background-color: #1E1E1E;
     border-radius: 8px;

@@ -9,15 +9,47 @@
         align-items: flex-start;
     }
 
-    .navigation {
+    .title {
+        display: flex;
         flex-direction: column;
-        width: 100%;
+        align-items: normal;
+        padding: 0;
     }
 
-    .navigation a {
+    .title h1 {
+        font-size: 1.2rem;
+        margin: 0;
+    }
+
+    .title h2 {
+        font-size: 1rem;
+        margin: 0;
+    }
+
+    .navigation {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        gap: 0;
+    }
+
+    .navigation a { 
         width: 100%;
         text-align: center;
         margin-top: 10px;
+    }
+
+    .hamburger {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        display: block;
+        font-size: 30px;
+        cursor: pointer;
+        margin-left: auto;
+        margin-top: 0;
+        padding: 5px 10px;
     }
 
     .dashBoard {
@@ -46,5 +78,15 @@
 
     .history {
         height: 150px;
+    }
+
+    .navigation.open {
+        display: flex;
+    }
+    
+    /* Style for close ("X") icon */
+    .hamburger.open {
+        content: "\00D7"; /* Unicode for 'X' */
+        font-size: 30px;
     }
 }
