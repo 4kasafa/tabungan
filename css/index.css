@@ -1,27 +1,32 @@
 /* Global Styles */
-body {
+html, body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #121212;
     color: #fff;
     user-select: none;
+    height: 100%;
+    overflow: hidden;
 }
 
 .container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
+    height: 100vh;
 }
 
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #1E1E1E;
     padding: 5px 20px;
     border-radius: 8px;
-    margin-bottom: 20px;
+    
 }
 
 .title {
@@ -41,10 +46,9 @@ body {
 }
 
 .navigation a {
-    color: #00BCD4;
+    color: #fff;
     text-decoration: none;
     padding: 10px 15px;
-    background-color: #333;
     border-radius: 4px;
 }
 
@@ -66,24 +70,35 @@ body {
 }
 
 .totalBox {
-    width: 50%;
-    height: 150px;
-    background-color: #333;
-    border-radius: 8px;
-}
-
-.percentage {
-    width: 50%;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    width: 47.5%;
+    height: 150px;
+    border-radius: 8px;
+    padding: 0 0 0 15px;
     justify-content: center;
 }
 
-.percentageBox {
-    width: 80%;
-    height: 150px;
-    background-color: #333;
+.totalBox h1, p{
+    margin: 0;
+}
+
+.setTarget {
+    margin-right: 15px;
+}
+
+.percentage {
+    width: 47.5%;
+    display: flex;
+    padding: 0 15px 0 0;
+    align-items: center;
+    justify-content: center;
     border-radius: 8px;
+}
+
+.percentageBox {
+    width: 140px;
+    height: 140px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -91,9 +106,9 @@ body {
 
 .percentageBar {
     position: relative;
-    width: 100px;
-    height: 100px;
-    background-color: #1E1E1E;
+    width: 100%;
+    height: 100%;
+    background: conic-gradient(#00BCD4 0% 75%, #333 75% 100%);
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -102,8 +117,15 @@ body {
 
 .percentageNumber {
     position: absolute;
-    color: #00BCD4;
+    color: #fff;
     font-size: 24px;
+}
+
+.ring {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: #1E1E1E;
 }
 
 .buttons {
@@ -115,7 +137,7 @@ body {
 .tambahButton, .ambilButton {
     width: 48%;
     padding: 15px;
-    background-color: #00BCD4;
+    background-color: #1E1E1E;
     color: #fff;
     border: none;
     border-radius: 8px;
@@ -124,25 +146,30 @@ body {
 }
 
 .tambahButton:hover, .ambilButton:hover {
-    background-color: #00796B;
+    background-color: #00BCD4;
 }
 
 .tambahButton:focus, .ambilButton:focus {
-    background-color: #00BCD4; /* Kembali ke warna asal */
+    background-color: #1E1E1E; /* Kembali ke warna asal */
     outline: none; /* Hilangkan border fokus jika ada */
 }
 
 .history {
+    flex-grow: 1;
+    overflow-y: auto;
     margin-top: 20px;
     background-color: #1E1E1E;
     height: 200px;
-    border-radius: 8px;
 }
 
 .stickyFooter {
     margin-top: 20px;
     text-align: center;
-    padding: 10px;
-    background-color: #1E1E1E;
-    border-radius: 8px;
+    background-color: #121212;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    font-size: 10px;
+    padding: 5px;
 }
