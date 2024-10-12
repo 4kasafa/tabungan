@@ -26,10 +26,13 @@
         <div class="dashBoard">
             <div class="totalBox">
                 <p>Total</p>
-                <h1>Rp 1.200.000</h1>
+                <h1 id="balanceValue">Rp 1.200.000</h1>
             </div>
             <div class="percentage">
-                <p class="setTarget">Target RP 1.500.000</p>
+                <div class="setTarget">
+                    <p targetTitle>Target</p>
+                    <p class="targetContent" id="goalsContent">RP 1.500.000</p>
+                </div>
                 <div class="percentageBox">
                     <div class="percentageBar">
                         <p class="percentageNumber">75%</p>
@@ -43,6 +46,13 @@
             <button class="ambilButton">Ambil</button>
         </div>
         <div class="history"></div>
+        <div class="popup" id="setTargetPopup">
+            <h2>SETEL TARGET</h2>
+            <input type="text" id="targetInput" placeholder="Masukan jumlah target">
+            <button id="targetButton">SETEL</button>
+        </div>
+        <div class="popup" id="tambahPopup"></div>
+        <div class="popup" id="ambilPopup"></div>
         <div class="stickyFooter">&copy; 2024 BY ABDUL</div>
     </div>
     <script src="js/main.js" type="module"></script>
