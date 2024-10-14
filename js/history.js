@@ -5,11 +5,20 @@ import { domElements } from './dom.js';
 // Add history entry
 export const addHistory = (date, description, amount, color) => {
     const row = document.createElement('tr');
+    
+    // Format date and time separately
+    const formattedDate = date.toLocaleDateString(); // Hanya tanggal
+    const formattedTime = date.toLocaleTimeString(); // Hanya jam
+    
     row.innerHTML = `
-        <td>${date.toLocaleString()}</td>
+        <td>
+            ${formattedDate}<br>
+            <small>${formattedTime}</small>
+        </td>
         <td>${description}</td>
         <td style="color:${color}">RP ${Math.abs(amount).toLocaleString()}</td>
     `;
+    
     domElements.historyBody.prepend(row);
 };
 

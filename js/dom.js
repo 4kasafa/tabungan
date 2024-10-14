@@ -8,6 +8,8 @@ export const domElements = {
     persentaseBar: getById('persentaseBar'),
     persentase: getById('persentase'),
     persenNumber: getById('persenNumber'),
+    tombolTambah: getById('tombolTambah'),
+    tombolKurang:getById('tombolKurang'),
     historyBody: getById('historyBody'),
     goalsPopup: getById('goalsPopup'),
     incomePopup: getById('incomePopup'),

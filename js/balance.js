@@ -3,7 +3,7 @@ import { balanceRef, set, onValue } from './firebase.js';
 import { domElements } from './dom.js';
 import { loadHistoryFromFirebase } from './history.js';
 
-let balance = 0;
+export let balance = 0;
 let target = 0;
 
 // Update balance
@@ -11,6 +11,7 @@ export const updateBalance = () => {
     domElements.balanceValue.textContent = `RP ${balance.toLocaleString()}`;
     updateProgress();
     set(balanceRef, balance);
+    console.log("sukses");
 };
 
 // Update progress bar
@@ -36,6 +37,19 @@ export const loadBalanceFromFirebase = () => {
         if (balanceData !== null) {
             balance = balanceData;
             updateBalance();
+            console.log("sukses");
         }
     });
 };
+
+// balance.js
+export const addToBalance = (amount) => {
+    balance += amount; // update balance
+    updateBalance();   // update display and sync with Firebase
+};
+
+export const subtractFromBalance = (amount) => {
+    balance -= amount; // update balance
+    updateBalance();   // update display and sync with Firebase
+};
+

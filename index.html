@@ -26,36 +26,52 @@
         <div class="dashBoard">
             <div class="totalBox">
                 <p>Total</p>
-                <h1 id="balanceValue">Rp 1.200.000</h1>
+                <h1 id="balanceValue">Rp 1.300.000</h1>
             </div>
             <div class="percentage">
                 <div class="setTarget">
-                    <p targetTitle>Target</p>
-                    <p class="targetContent" id="goalsContent">RP 1.500.000</p>
+                    <p class="targetTitle">Target</p>
+                    <p class="targetContent" id="goalsConten">RP 1.500.000</p>
                 </div>
-                <div class="percentageBox">
-                    <div class="percentageBar">
-                        <p class="percentageNumber">75%</p>
+                <div class="percentageBox" id="persentase">
+                    <div class="percentageBar" id="persentaseBar">
+                        <p class="percentageNumber" id="persenNumber">75%</p>
                         <div class="ring"></div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="buttons">
-            <button class="tambahButton">tambah</button>
-            <button class="ambilButton">Ambil</button>
+            <button class="tambahButton" id="tombolTambah">tambah</button>
+            <button class="ambilButton" id="tombolKurang">Ambil</button>
         </div>
-        <div class="history"></div>
-        <div class="popup" id="setTargetPopup">
+        <div class="history" id="historyBody"></div>
+        <div class="popup" id="goalsPopup">
             <h2>SETEL TARGET</h2>
             <input type="text" id="targetInput" placeholder="Masukan jumlah target">
-            <button id="targetButton">SETEL</button>
+            <button id="setTargetButton">SETEL</button>
         </div>
-        <div class="popup" id="tambahPopup"></div>
-        <div class="popup" id="ambilPopup"></div>
+        <div class="popup" id="incomePopup">
+            <h2>Tambah Pemasukan</h2>
+            <input type="text" placeholder="0.0" id="incomeInput">
+            <button id="addIncomeButton">Tambah</button>
+        </div>
+        <div class="popup" id="expensePopup">
+            <h2>Ambil Uang</h2>
+            <input type="text" placeholder="0.0" id="expenseInput">
+            <input type="text" placeholder="Masukan nama/keterangan!" id="expenseNote">
+            <button id="subtractExpenseButton">Ambil</button>
+        </div>
+        <div class="aler" id="alertPopup">
+            
+        </div>
         <div class="stickyFooter">&copy; 2024 BY ABDUL</div>
     </div>
+    <script src="js/dom.js" type="module"></script>
     <script src="js/main.js" type="module"></script>
     <script src="js/firebase.js" type="module"></script>
+    <script src="js/history.js" type="module"></script>
+    <script src="js/balance.js" type="module"></script>
+    <script src="js/target.js" type="module"></script>
 </body>
 </html>

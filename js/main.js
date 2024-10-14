@@ -1,9 +1,10 @@
 // main.js
 import { domElements, hideAllPopups, clearInput, addRupiahFormatting, getNumericValue } from './dom.js';
-import { loadBalanceFromFirebase, updateBalance } from './balance.js';
+import { loadBalanceFromFirebase, updateBalance, balance, addToBalance, subtractFromBalance } from './balance.js';
 import { loadTargetFromFirebase, setTarget } from './target.js';
 import { loadHistoryFromFirebase } from './history.js';
-import { push } from './firebase.js';
+import { balanceRef, targetRef, historyRef, set, push, onValue } from './firebase.js';
+
 
 // Initialize the app
 const initApp = () => {
@@ -17,18 +18,16 @@ const initApp = () => {
 };
 
 // Hamburger menu functionality
-document.addEventListener("DOMContentLoaded", function() {
-    domElements.hamburger.addEventListener('click', () => {
-        // Toggle menu visibility
-        domElements.navMenu.classList.toggle('open');
-        
-        // Toggle hamburger icon between "hamburger" and "X"
-        if (domElements.navMenu.classList.contains('open')) {
-            domElements.hamburger.innerHTML = '&#10005;'; // Unicode for "X"
-        } else {
-            domElements.hamburger.innerHTML = '&#9776;'; // Unicode for hamburger
-        }
-    });
+domElements.hamburger.addEventListener('click', () => {
+    // Toggle menu visibility
+    domElements.navMenu.classList.toggle('open');
+    
+    // Toggle hamburger icon between "hamburger" and "X"
+    if (domElements.navMenu.classList.contains('open')) {
+        domElements.hamburger.innerHTML = '&#10005;'; // Unicode for "X"
+    } else {
+        domElements.hamburger.innerHTML = '&#9776;'; // Unicode for hamburger
+    }
 });
 
 // Event listeners
@@ -46,16 +45,31 @@ domElements.setTargetButton.addEventListener('click', () => {
     domElements.goalsPopup.style.display = 'none';
 });
 
+domElements.tombolTambah.addEventListener('click', () => {
+    hideAllPopups();
+    domElements.incomePopup.style.display = 'block';
+});
+
 domElements.addIncomeButton.addEventListener('click', () => {
     const income = getNumericValue('incomeInput');
     if (income > 0) {
-        balance += income;
+        addToBalance(income);
+        console.log("Updated balance after adding income:", balance);
         updateBalance();
-        const entry = { date: new Date().toISOString(), description: 'Pemasukan', amount: income, color: 'green' };
+        const entry = { 
+            date: new Date().toISOString(),
+            description: 'Pemasukan',
+            amount: income, 
+            color: 'green' };
         push(historyRef, entry); // Add to Firebase
     }
     clearInput('incomeInput');
     domElements.incomePopup.style.display = 'none';
+});
+
+domElements.tombolKurang.addEventListener('click', () => {
+    hideAllPopups();
+    domElements.expensePopup.style.display = 'block';
 });
 
 domElements.subtractExpenseButton.addEventListener('click', () => {
@@ -65,7 +79,7 @@ domElements.subtractExpenseButton.addEventListener('click', () => {
         if (expense > balance) {
             domElements.alertPopup.style.display = 'block';
         } else {
-            balance -= expense;
+            subtractFromBalance(expense);
             updateBalance();
             const entry = { date: new Date().toISOString(), description: note, amount: -expense, color: 'red' };
             push(historyRef, entry); // Add to Firebase
@@ -76,9 +90,9 @@ domElements.subtractExpenseButton.addEventListener('click', () => {
     domElements.expensePopup.style.display = 'none';
 });
 
-domElements.closeAlert.addEventListener('click', () => {
-    domElements.alertPopup.style.display = 'none';
-});
+//SdomElements.closeAlert.addEventListener('click', () => {
+//S    domElements.alertPopup.style.display = 'none';
+//S});
 
 // Start the app
 initApp();
