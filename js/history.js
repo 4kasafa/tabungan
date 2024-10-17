@@ -1,6 +1,6 @@
 // history.js
 import { historyRef, push, onValue } from './firebase.js';
-import { domElements } from './dom.js';
+import { domElements, formatRupiah, formatRupiahValue } from './dom.js';
 
 // Add history entry
 export const addHistory = (date, description, amount, color) => {
@@ -9,6 +9,7 @@ export const addHistory = (date, description, amount, color) => {
     // Format date and time separately
     const formattedDate = date.toLocaleDateString(); // Hanya tanggal
     const formattedTime = date.toLocaleTimeString(); // Hanya jam
+    const formatedAmount = `Rp ${formatRupiahValue(Math.abs(amount))}`;
     
     row.innerHTML = `
         <td>
@@ -16,7 +17,7 @@ export const addHistory = (date, description, amount, color) => {
             <small>${formattedTime}</small>
         </td>
         <td>${description}</td>
-        <td style="color:${color}">RP ${Math.abs(amount).toLocaleString()}</td>
+        <td style="color:${color}">${formatedAmount}</td>
     `;
     
     domElements.historyBody.prepend(row);

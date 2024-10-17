@@ -1,31 +1,33 @@
 // balance.js
 import { balanceRef, set, onValue } from './firebase.js';
-import { domElements } from './dom.js';
-import { loadHistoryFromFirebase } from './history.js';
+import { domElements, formatRupiah } from './dom.js';
+import { target } from './target.js';
 
 export let balance = 0;
-let target = 0;
 
 // Update balance
 export const updateBalance = () => {
-    domElements.balanceValue.textContent = `RP ${balance.toLocaleString()}`;
+    domElements.balanceValue.textContent = `${balance}`;
+    formatRupiah(domElements.balanceValue);
     updateProgress();
     set(balanceRef, balance);
-    console.log("sukses");
+    
 };
 
 // Update progress bar
-const updateProgress = () => {
+export const updateProgress = () => {
+
     if (target > 0) {
         const percentage = Math.min((balance / target) * 100, 100);
         domElements.persenNumber.textContent = `${percentage.toFixed(0)}%`;
 
         if (window.matchMedia("(max-width: 767px)").matches) {
-            domElements.persentaseBar.style.width = `${percentage}%`;
-            domElements.persentaseBar.style.backgroundColor = `#f39c12`;
+            // Hanya ubah style.width jika dalam mode mobile
+            persentaseBar.style.width = `${percentage}%`;
+            persentaseBar.style.backgroundColor = `#00BCD4`
         } else {
-            domElements.persentaseBar.style.width = `100%`;
-            domElements.persentaseBar.style.background = `conic-gradient(#f39c12 0% ${percentage}%, #2c2c2c ${percentage}%)`;
+            persentaseBar.style.width = `100%`
+            persentaseBar.style.background = `conic-gradient(#00BCD4 0% ${percentage}%, #2c2c2c ${percentage}%)`;
         }
     }
 };
@@ -37,7 +39,6 @@ export const loadBalanceFromFirebase = () => {
         if (balanceData !== null) {
             balance = balanceData;
             updateBalance();
-            console.log("sukses");
         }
     });
 };

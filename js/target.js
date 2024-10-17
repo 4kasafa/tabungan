@@ -1,9 +1,9 @@
 // target.js
 import { targetRef, set, onValue } from './firebase.js';
-import { domElements } from './dom.js';
-import { updateBalance } from './balance.js';
+import { domElements, formatRupiah } from './dom.js';
+import { updateBalance, updateProgress } from './balance.js';
 
-let target = 0;
+export let target = 0;
 
 // Load target from Firebase
 export const loadTargetFromFirebase = () => {
@@ -11,10 +11,11 @@ export const loadTargetFromFirebase = () => {
         const targetData = snapshot.val();
         if (targetData !== null) {
             target = targetData;
-            domElements.goalsConten.textContent = `RP ${target.toLocaleString()}`;
+            domElements.goalsConten.textContent = `${target}`;
+            formatRupiah(domElements.goalsConten);
             domElements.persentaseBar.style.display = 'flex';
             domElements.persentase.style.display = 'flex';
-            updateBalance(); // Update progress bar
+            updateProgress();// Update progress bar
         }
     });
 };

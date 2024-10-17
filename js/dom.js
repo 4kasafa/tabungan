@@ -32,10 +32,22 @@ export const clearInput = (inputId) => {
     document.getElementById(inputId).value = '';
 };
 
-export const formatRupiah = (input) => {
-    let angka = input.value.replace(/\D/g, ''); // Remove non-numeric characters
+// Fungsi untuk memformat angka ke dalam format Rupiah
+export const formatRupiahValue = (value) => {
+    let angka = value.toString().replace(/\D/g, ''); // Pastikan hanya angka
+    return angka.replace(/\B(?=(\d{3})+(?!\d))/g, '.'); // Tambahkan pemisah ribuan
+};
+
+export const formatRupiah = (element) => {
+    let value = element instanceof HTMLInputElement ? element.value : element.textContent;
+    let angka = value.replace(/\D/g, ''); // Remove non-numeric characters
     angka = angka.replace(/\B(?=(\d{3})+(?!\d))/g, '.'); // Add thousand separators
-    input.value = angka;
+
+    if (element instanceof HTMLInputElement) {
+        element.value = angka;  // Update input value
+    } else {
+        element.textContent = `Rp ${angka}`;  // Update text content for non-input elements
+    }
 };
 
 export const getNumericValue = (inputId) => {

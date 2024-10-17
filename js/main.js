@@ -90,9 +90,9 @@ domElements.subtractExpenseButton.addEventListener('click', () => {
     domElements.expensePopup.style.display = 'none';
 });
 
-//SdomElements.closeAlert.addEventListener('click', () => {
-//S    domElements.alertPopup.style.display = 'none';
-//S});
+domElements.closeAlert.addEventListener('click', () => {
+    domElements.alertPopup.style.display = 'none';
+});
 
 // Start the app
 initApp();

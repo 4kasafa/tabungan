@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>TABUNGAN</title>
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/index-mobile.css">
 </head>
@@ -26,26 +26,31 @@
         <div class="dashBoard">
             <div class="totalBox">
                 <p>Total</p>
-                <h1 id="balanceValue">Rp 1.300.000</h1>
+                <h1 id="balanceValue">Rp 0</h1>
             </div>
             <div class="percentage">
                 <div class="setTarget">
                     <p class="targetTitle">Target</p>
-                    <p class="targetContent" id="goalsConten">RP 1.500.000</p>
+                    <p class="targetContent" id="goalsConten">Klik untuk menyetel target</p>
                 </div>
                 <div class="percentageBox" id="persentase">
                     <div class="percentageBar" id="persentaseBar">
-                        <p class="percentageNumber" id="persenNumber">75%</p>
+                        <p class="percentageNumber" id="persenNumber"></p>
                         <div class="ring"></div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="buttons">
-            <button class="tambahButton" id="tombolTambah">tambah</button>
-            <button class="ambilButton" id="tombolKurang">Ambil</button>
+            <button class="tambahButton" id="tombolTambah">TAMBAH &uArr;</button>
+            <button class="ambilButton" id="tombolKurang">AMBIL &#8659;</button>
         </div>
-        <div class="history" id="historyBody"></div>
+        <div class="history" >
+            <table id="historyBody">
+
+            </table>
+        </div>
+        <!-------POPUP---------------->
         <div class="popup" id="goalsPopup">
             <h2>SETEL TARGET</h2>
             <input type="text" id="targetInput" placeholder="Masukan jumlah target">
@@ -62,8 +67,9 @@
             <input type="text" placeholder="Masukan nama/keterangan!" id="expenseNote">
             <button id="subtractExpenseButton">Ambil</button>
         </div>
-        <div class="aler" id="alertPopup">
-            
+        <div class="popup" id="alertPopup">
+            <p id="alertMessage">Saldo tidak mencukupi!</p>
+        <button id="closeAlert">Tutup</button>
         </div>
         <div class="stickyFooter">&copy; 2024 BY ABDUL</div>
     </div>
