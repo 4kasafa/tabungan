@@ -32,6 +32,7 @@ export const loadHistoryFromFirebase = () => {
             Object.values(historyData).forEach((entry) => {
                 addHistory(new Date(entry.date), entry.description, entry.amount, entry.color);
             });
+            updateBalanceFromHistory(historyData); // Update balance berdasarkan riwayat yang dimuat
         }
     });
 };

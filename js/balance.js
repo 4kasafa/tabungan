@@ -2,8 +2,26 @@
 import { balanceRef, set, onValue } from './firebase.js';
 import { domElements, formatRupiah } from './dom.js';
 import { target } from './target.js';
+import { loadHistoryFromFirebase } from './history.js';
 
 export let balance = 0;
+
+// Fungsi untuk menghitung balance dari riwayat
+const calculateBalanceFromHistory = (historyData) => {
+    let totalIncome = 0;
+    let totalExpense = 0;
+
+    Object.values(historyData).forEach((entry) => {
+        if (entry.amount > 0) {
+            totalIncome += entry.amount; // Tambahkan pemasukan
+        } else {
+            totalExpense += Math.abs(entry.amount); // Tambahkan pengeluaran
+        }
+    });
+
+    balance = totalIncome - totalExpense; // Hitung balance
+};
+
 
 // Update balance
 export const updateBalance = () => {
@@ -12,6 +30,12 @@ export const updateBalance = () => {
     updateProgress();
     set(balanceRef, balance);
     
+};
+
+// Fungsi untuk menghitung dan mengupdate balance setelah riwayat dihapus
+export const updateBalanceFromHistory = (historyData) => {
+    calculateBalanceFromHistory(historyData);
+    updateBalance();
 };
 
 // Update progress bar
@@ -24,10 +48,10 @@ export const updateProgress = () => {
         if (window.matchMedia("(max-width: 767px)").matches) {
             // Hanya ubah style.width jika dalam mode mobile
             persentaseBar.style.width = `${percentage}%`;
-            persentaseBar.style.backgroundColor = `#00BCD4`
+            persentaseBar.style.backgroundColor = `#9cb75a`
         } else {
             persentaseBar.style.width = `100%`
-            persentaseBar.style.background = `conic-gradient(#00BCD4 0% ${percentage}%, #2c2c2c ${percentage}%)`;
+            persentaseBar.style.background = `conic-gradient(#9cb75a 0% ${percentage}%, #484a4b ${percentage}%)`;
         }
     }
 };

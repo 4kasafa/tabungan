@@ -60,7 +60,7 @@ domElements.addIncomeButton.addEventListener('click', () => {
             date: new Date().toISOString(),
             description: 'Pemasukan',
             amount: income, 
-            color: 'green' };
+            color: '#9cb75a' };
         push(historyRef, entry); // Add to Firebase
     }
     clearInput('incomeInput');
@@ -81,7 +81,7 @@ domElements.subtractExpenseButton.addEventListener('click', () => {
         } else {
             subtractFromBalance(expense);
             updateBalance();
-            const entry = { date: new Date().toISOString(), description: note, amount: -expense, color: 'red' };
+            const entry = { date: new Date().toISOString(), description: note, amount: -expense, color: '#ec3a02' };
             push(historyRef, entry); // Add to Firebase
         }
     }

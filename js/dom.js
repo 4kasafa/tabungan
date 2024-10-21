@@ -69,3 +69,14 @@ export const addRupiahFormatting = (inputId) => {
         formatRupiah(this);
     });
 };
+
+export function removeSpecialChars(event) {
+    const inputField = event.target;
+    inputField.value = inputField.value.replace(/[^A-Za-z\s]/g, '');
+}
+
+// Menambahkan event listener untuk validasi input pada elemen yang sesuai
+const inputElements = [expenseNote];
+inputElements.forEach(inputElement => {
+    inputElement.addEventListener('input', removeSpecialChars);
+});

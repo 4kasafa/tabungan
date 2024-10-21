@@ -3,8 +3,8 @@ html, body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #121212;
-    color: #fff;
+    background-color: #fff;
+    color: #070709;
     user-select: none;
     height: 100%;
     overflow: hidden;
@@ -46,15 +46,29 @@ html, body {
 }
 
 .navigation a {
-    color: #fff;
+    color: #070709;
     text-decoration: none;
     padding: 10px 15px;
     border-radius: 4px;
+    display: block;
+    background-color: #fff;
+    position: relative;
 }
 
-.navigation a:hover {
-    background-color: #00BCD4;
-    color: #121212;
+.navigation a::after {
+    content: "";
+    background-color: #070709;
+    width: 100%;
+    height: 2px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: scaleX(0);
+    transition: transform 0.3s;
+}
+
+.navigation a:hover::after {
+    transform: scaleX(1);
 }
 
 .hamburger {
@@ -64,7 +78,7 @@ html, body {
 .dashBoard {
     display: flex;
     justify-content: space-between;
-    background-color: #1E1E1E;
+    background: linear-gradient(to bottom right, #484a4b, #10131b);
     padding: 20px;
     border-radius: 8px;
 }
@@ -77,6 +91,7 @@ html, body {
     border-radius: 8px;
     padding: 0 0 0 15px;
     justify-content: center;
+    color: #fff;
 }
 
 .totalBox h1 {
@@ -95,6 +110,7 @@ html, body {
     padding: 0 15px 0 0;
     align-items: center;
     border-radius: 8px;
+    color: #fff;
 }
 
 .setTarget {
@@ -124,7 +140,6 @@ html, body {
     position: relative;
     width: 100%;
     height: 100%;
-    background: conic-gradient(#00BCD4 0% 100%, #333 100%);
     border-radius: 50%;
     display: none;
     justify-content: center;
@@ -141,7 +156,7 @@ html, body {
     width: 120px;
     height: 120px;
     border-radius: 50%;
-    background-color: #1E1E1E;
+    background: linear-gradient(to bottom right, #3a3b3b, #10131b);
 }
 
 .buttons {
@@ -153,7 +168,7 @@ html, body {
 .tambahButton, .ambilButton {
     width: 48%;
     padding: 15px;
-    background-color: #1E1E1E;
+    background: linear-gradient(to bottom right, #484a4b, #10131b);
     color: #fff;
     border: none;
     border-radius: 8px;
@@ -161,21 +176,42 @@ html, body {
     transition: background-color 0.3s ease;
 }
 
-.tambahButton:hover, .ambilButton:hover {
-    background-color: #00BCD4;
+.tambahButton:hover  {
+    background-color: #9cb75a;
 }
 
-.tambahButton:focus, .ambilButton:focus {
-    background-color: #1E1E1E; /* Kembali ke warna asal */
-    outline: none; /* Hilangkan border fokus jika ada */
+.ambilButton:hover {
+    background-color: #ec3a02;
+}
+
+.historyContainer {
+    flex-grow: 1;
+    margin-top: 20px;
+    height: 200px;
+    position: relative;
+}
+
+.historyHead {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 2px;
+    margin: 0;
+    color: #555656;
+}
+
+.historyHead h4 {
+    margin: 0;
+    padding: 0;
 }
 
 .history {
-    flex-grow: 1;
     overflow-y: auto;
-    margin-top: 20px;
-    height: 200px;
-    padding-bottom: 50px;
+    scrollbar-width: none;
+    height: 80%;
+    width: 100%;
+    padding-bottom: 100px;
+    position: relative;
+    border-top: 1.5px dashed rgb(202, 202, 202);
 }
 
 table {
@@ -184,15 +220,27 @@ table {
     
 }
 
+tr {
+    border-bottom: 1.5px dashed rgba(176, 175, 175, 0.558);
+    width: 100%;
+}
+
 td {
     padding: 10px;
     text-align: left;
-    
-    font-size: 16px;
-    color: #f0f0f0;
+    font-size: 20px;
+    font-weight: bold;
+    color: #484a4b;
 }
 
-td:nth-child(3){
+td:nth-child(2) {
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+td:nth-child(3) {
     text-align: right;
 }
 
@@ -253,6 +301,7 @@ td:nth-child(3){
     margin-top: 20px;
     text-align: center;
     background-color: #121212;
+    color: #fff;
     position: fixed;
     bottom: 0;
     left: 0;
